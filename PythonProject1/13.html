@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Порядок полей в форме</title>
+<style>
+fieldset {
+width:200px;/* Ширина */
+padding: 0 10px; /* Поля */
+   }
+fieldset:nth-child(odd) {
+float: left; /* Обтекание для всех нечётных элементов */
+    }
+</style>
+</head>
+<body>
+<form>
+<fieldset>
+    <р>Имя:</р>
+<p><input name="name" tabindex="1"></p>
+</fieldset>
+<fieldset>
+<p>Фамилия: </p>
+<p><input name="lastname" tabindex="3"></p>
+</fieldset>
+<fieldset>
+<p>Телефон: </p>
+<p><input name="tel" type="tel" tabindex="2"></p>
+</fieldset>
+<fieldset>
+    <р>Пол:</р>
+<p><select name="gender" tabindex="4">
+<option selected>Мужской</option>
+<option>Женский</option>
+</select></p>
+</fieldset>
+</form>
+</body>
+</html>
