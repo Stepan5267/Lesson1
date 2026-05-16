@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Progress Bar</title>
+    <style>
+        /* Родитель */
+        .progress {
+            width: 300px;
+            height: 30px;
+            background: gray;
+            margin: 20px auto;
+        }
+
+        /* Дочерний селектор .progress > .fill */
+        .progress > .fill {
+            display: block;
+            width: 60%;           /* Статическая 60% */
+            height: 100%;
+            background: green;
+        }
+
+        /* Псевдоэлемент с процентом */
+        .progress > .fill::after {
+            content: "60%";
+            display: block;
+            text-align: center;
+            color: white;
+            line-height: 30px;
+        }
+
+        /* :target меняет ширину */
+        #p60:target ~ .progress > .fill {
+            width: 60%;
+        }
+        #p60:target ~ .progress > .fill::after {
+            content: "60%";
+        }
+
+        #p80:target ~ .progress > .fill {
+            width: 80%;
+        }
+        #p80:target ~ .progress > .fill::after {
+            content: "80%";
+        }
+
+        #p100:target ~ .progress > .fill {
+            width: 100%;
+        }
+        #p100:target ~ .progress > .fill::after {
+            content: "100%";
+        }
+
+        /* Ссылки */
+        a {
+            display: inline-block;
+            margin: 10px;
+            padding: 5px 15px;
+            background: blue;
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="p60"></div>
+    <div id="p80"></div>
+    <div id="p100"></div>
+
+    <div class="progress">
+        <div class="fill"></div>
+    </div>
+
+    <div style="text-align: center;">
+        <a href="#p60">60%</a>
+        <a href="#p80">80%</a>
+        <a href="#p100">100%</a>
+    </div>
+
+</body>
+</html>
