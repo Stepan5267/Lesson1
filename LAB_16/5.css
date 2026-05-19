@@ -1,0 +1,15 @@
+.letter-spacing-1 {
+    letter-spacing: -1px;
+}
+
+.letter-spacing-2 {
+    letter-spacing: 1px;
+}
+
+.word-spacing-1 {
+    word-spacing: -1px;
+}
+
+.word-spacing-2 {
+    word-spacing: 1px;
+}
