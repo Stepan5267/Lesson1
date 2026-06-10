@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Чётное или нечётное</title>
+</head>
+<body>
+    <input type="number" id="num">
+    <button id="btn">Проверить</button>
+    <p id="result"></p>
+
+    <script>
+        const btn = document.getElementById('btn');
+        const numInput = document.getElementById('num');
+        const result = document.getElementById('result');
+
+        btn.onclick = function() {
+            const value = numInput.value;
+
+            if (value === '') {
+                result.textContent = 'Введите число';
+                return;
+            }
+
+            const number = Number(value);
+
+            if (number % 2 === 0) {
+                result.textContent = 'Чётное';
+            } else {
+                result.textContent = 'Нечётное';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Проверка номера телефона</title>
+</head>
+<body>
+    <input type="tel" id="phone" placeholder="Номер телефона">
+    <button id="btn">Проверить номер</button>
+    <p id="result"></p>
+
+    <script>
+        const btn = document.getElementById('btn');
+        const phoneInput = document.getElementById('phone');
+        const result = document.getElementById('result');
+
+        btn.onclick = function() {
+            let phone = phoneInput.value.trim();
+
+            if (phone === '') {
+                result.style.color = 'red';
+                result.textContent = 'Введите номер';
+                return;
+            }
+
+            // Убираем плюс в начале для проверки
+            let cleaned = phone;
+            if (cleaned[0] === '+') cleaned = cleaned.slice(1);
+
+            // Проверяем, что только цифры
+            for (let i = 0; i < cleaned.length; i++) {
+                if (cleaned[i] < '0' || cleaned[i] > '9') {
+                    result.style.color = 'red';
+                    result.textContent = 'Некорректный номер';
+                    return;
+                }
+            }
+
+            // Проверяем длину и формат
+            const len = cleaned.length;
+            const valid = (phone[0] === '+' && phone[1] === '7' && len === 11) ||
+                          (phone[0] === '8' && len === 11) ||
+                          (phone[0] !== '+' && phone[0] !== '8' && len === 10);
+
+            if (valid) {
+                result.style.color = 'green';
+                result.textContent = 'Номер телефона верный';
+            } else {
+                result.style.color = 'red';
+                result.textContent = 'Некорректный номер';
+            }
+        }
+    </script>
+</body>
+</html>

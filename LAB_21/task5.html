@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор ИМТ</title>
+</head>
+<body>
+    <input type="number" id="height" placeholder="Рост (см)">
+    <input type="number" id="weight" placeholder="Вес (кг)">
+    <button id="btn">Рассчитать ИМТ</button>
+    <p id="bmiValue"></p>
+    <p id="comment"></p>
+    <p id="recommendation"></p>
+
+    <script>
+        const btn = document.getElementById('btn');
+        const heightInput = document.getElementById('height');
+        const weightInput = document.getElementById('weight');
+        const bmiValueP = document.getElementById('bmiValue');
+        const commentP = document.getElementById('comment');
+        const recommendationP = document.getElementById('recommendation');
+
+        btn.onclick = function() {
+            const heightCm = Number(heightInput.value);
+            const weight = Number(weightInput.value);
+
+            // Проверки
+            if (heightCm < 50 || heightCm > 250) {
+                alert('Рост должен быть от 50 до 250 см');
+                return;
+            }
+            if (weight < 10 || weight > 300) {
+                alert('Вес должен быть от 10 до 300 кг');
+                return;
+            }
+
+            // Расчёт ИМТ
+            const heightM = heightCm / 100;
+            const bmi = weight / (heightM * heightM);
+            const bmiRounded = bmi.toFixed(2);
+
+            // Определение категории и цвета
+            let comment = '';
+            let color = '';
+            let recommendation = '';
+
+            if (bmi < 16) {
+                comment = 'Выраженный дефицит массы тела';
+                color = 'red';
+                recommendation = 'Рекомендуется сбалансированное питание с повышенной калорийностью';
+            } else if (bmi < 18.5) {
+                comment = 'Недостаточная масса тела';
+                color = 'orange';
+                recommendation = 'Рекомендуется сбалансированное питание с повышенной калорийностью';
+            } else if (bmi < 25) {
+                comment = 'Нормальная масса тела';
+                color = 'green';
+                recommendation = 'Отличный результат! Поддерживайте здоровый образ жизни';
+            } else if (bmi < 30) {
+                comment = 'Избыточная масса тела (предожирение)';
+                color = 'orange';
+                recommendation = 'Рекомендуется увеличить физическую активность и скорректировать питание';
+            } else if (bmi < 35) {
+                comment = 'Ожирение I степени';
+                color = 'red';
+                recommendation = 'Рекомендуется консультация врача-диетолога';
+            } else if (bmi < 40) {
+                comment = 'Ожирение II степени';
+                color = 'red';
+                recommendation = 'Рекомендуется консультация врача-диетолога';
+            } else {
+                comment = 'Ожирение III степени';
+                color = 'darkred';
+                recommendation = 'Рекомендуется консультация врача-диетолога';
+            }
+
+            // Вывод
+            bmiValueP.textContent = `ИМТ: ${bmiRounded}`;
+            commentP.textContent = `Комментарий: ${comment}`;
+            commentP.style.color = color;
+            recommendationP.textContent = `Рекомендация: ${recommendation}`;
+        }
+    </script>
+</body>
+</html>

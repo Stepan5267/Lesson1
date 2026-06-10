@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор чаевых</title>
+</head>
+<body>
+    <input type="number" id="bill" placeholder="Сумма счёта">
+    <input type="number" id="tip" placeholder="Процент чаевых (0-50)">
+    <input type="number" id="people" placeholder="Количество человек" value="1">
+    <button id="btn">Рассчитать</button>
+    <p id="tipAmount"></p>
+    <p id="totalAmount"></p>
+    <p id="perPerson"></p>
+
+    <script>
+        const btn = document.getElementById('btn');
+        const billInput = document.getElementById('bill');
+        const tipInput = document.getElementById('tip');
+        const peopleInput = document.getElementById('people');
+
+        const tipAmountP = document.getElementById('tipAmount');
+        const totalAmountP = document.getElementById('totalAmount');
+        const perPersonP = document.getElementById('perPerson');
+
+        btn.onclick = function() {
+            const bill = Number(billInput.value);
+            const tipPercent = Number(tipInput.value);
+            const people = Number(peopleInput.value);
+
+            // Проверки
+            if (bill < 0) {
+                alert('Сумма счёта не может быть меньше 0');
+                return;
+            }
+            if (tipPercent < 0 || tipPercent > 50) {
+                alert('Процент чаевых должен быть от 0 до 50');
+                return;
+            }
+            if (people < 1) {
+                alert('Количество человек не может быть меньше 1');
+                return;
+            }
+
+            // Расчёты
+            const tipAmount = bill * (tipPercent / 100);
+            const total = bill + tipAmount;
+            let perPerson = total / people;
+
+            // Округление если больше 1 человека
+            if (people > 1) {
+                perPerson = perPerson.toFixed(2);
+            }
+
+            // Вывод
+            tipAmountP.textContent = `Сумма чаевых: ${tipAmount} рублей`;
+            totalAmountP.textContent = `Общая сумма: ${total} рублей`;
+            perPersonP.textContent = `Каждый должен заплатить по ${perPerson} рублей (${people} человека)`;
+        }
+    </script>
+</body>
+</html>
