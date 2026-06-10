@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание В</title>
+</head>
+<body>
+
+    <button id="btn">Нажми меня</button>
+    <p id="text">Исходный текст</p>
+
+    <script>
+        let button = document.querySelector("#btn");
+        let paragraph = document.querySelector("#text");
+
+        button.onclick = function() {
+            paragraph.textContent = "Клик сработал!";
+            paragraph.style.color = "blue";
+        };
+    </script>
+
+</body>
+</html>
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 2</title>
+</head>
+<body>
+
+    <input type="number" id="num1">
+    <input type="number" id="num2">
+    <button id="calc-btn">Сложить</button>
+    <p id="result"></p>
+
+    <script>
+        let input1 = document.querySelector("#num1");
+        let input2 = document.querySelector("#num2");
+        let button = document.querySelector("#calc-btn");
+        let resultParagraph = document.querySelector("#result");
+
+        button.onclick = function() {
+            let value1 = Number(input1.value);
+            let value2 = Number(input2.value);
+            let sum = value1 + value2;
+
+            resultParagraph.textContent = "Сумма = " + sum;
+        };
+    </script>
+
+</body>
+</html>

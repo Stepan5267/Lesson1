@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 3 - Светофор</title>
+    <style>
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: gray;
+            margin: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="red" class="circle"></div>
+    <div id="yellow" class="circle"></div>
+    <div id="green" class="circle"></div>
+
+    <br>
+
+    <button id="btn-red">Красный</button>
+    <button id="btn-yellow">Жёлтый</button>
+    <button id="btn-green">Зелёный</button>
+
+    <script>
+        let redCircle = document.querySelector("#red");
+        let yellowCircle = document.querySelector("#yellow");
+        let greenCircle = document.querySelector("#green");
+
+        let btnRed = document.querySelector("#btn-red");
+        let btnYellow = document.querySelector("#btn-yellow");
+        let btnGreen = document.querySelector("#btn-green");
+
+        function resetColors() {
+            redCircle.style.backgroundColor = "gray";
+            yellowCircle.style.backgroundColor = "gray";
+            greenCircle.style.backgroundColor = "gray";
+        }
+
+        btnRed.onclick = function() {
+            resetColors();
+            redCircle.style.backgroundColor = "red";
+        };
+
+        btnYellow.onclick = function() {
+            resetColors();
+            yellowCircle.style.backgroundColor = "yellow";
+        };
+
+        btnGreen.onclick = function() {
+            resetColors();
+            greenCircle.style.backgroundColor = "green";
+        };
+    </script>
+
+</body>
+</html>
